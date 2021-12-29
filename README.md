@@ -1,4 +1,4 @@
-# ansible-role-hashicorp
+# ansible-role-dotfiles
 
 An ansible role to install my preferred dotfile settings.
 
