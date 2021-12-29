@@ -1,2 +1,9 @@
 ---
 # tasks file for ansible-role-dotfiles
+
+- name: "Ensure dotfiles are in their location."
+  copy:
+    src: "{{ item }}"
+    dest: "{{ dotfiles_home_path }}/"
+  with_fileglob:
+    - "*"
