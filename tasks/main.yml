@@ -1,9 +1,24 @@
 ---
 # tasks file for ansible-role-dotfiles
 
+- name: "Ensure {{ vim_colors_path }} directory is present."
+  file:
+    path: "{{ vim_colors_path | dirname }}"
+    state: directory
+    mode: "0775"
+
+- name: "Ensure vim theses are present."
+  copy:
+    src: "{{ item }}"
+    dest: "{{ vim_colors_path }}/"
+    mode: "0644"
+  with_fileglob:
+    - "files/.vim/colors/*"
+
 - name: "Ensure dotfiles are in their location."
   copy:
     src: "{{ item }}"
     dest: "{{ dotfiles_home_path }}/"
+    mode: "0644"
   with_fileglob:
-    - "*"
+    - "files/.*"

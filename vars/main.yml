@@ -1,2 +1,3 @@
 ---
 # vars file for ansible-role-dotfiles
+vim_colors_path: "{{ dotfiles_home_path }}/.vim/colors"
