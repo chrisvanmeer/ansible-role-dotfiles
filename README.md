@@ -15,11 +15,10 @@ Git on the client you are running this.
 | dotfiles_repo_accept_hostkey    | `false`                                        | Accept repo hostkey if not present.      |
 | dotfiles_repo_local_destination | `~/Documents/dotfiles`                         | Location where the repository is cloned. |
 | dotfiles_home                   | `~`                                            | Defaults to current user home directory. |
-| dotfiles_vim_colors_path        | `.vim/colors`                                  | Path to the .vim colors directory.       |
 
 ## Dependencies
 
-This role depends on the `ansible.posix` collection. Install this with the following command:
+This role depends on the `ansible.posix` collection. Install this on the control host with the following command:
 
 ```
 ansible-galaxy collection install ansible.posix
