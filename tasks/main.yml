@@ -13,4 +13,5 @@
   synchronize:
     src: "{{ dotfiles_repo_local_destination }}/"
     dest: "{{ dotfiles_home }}/"
+    times: no
   become: false
