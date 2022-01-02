@@ -9,27 +9,33 @@
     accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
   become: false
 
-- name: "Ensure {{ dotfiles_vim_colors_full_path }} directory is present."
-  file:
-    path: "{{ dotfiles_vim_colors_full_path | dirname }}"
-    state: directory
-    mode: "0775"
-  become: false
-
-- name: "Ensure vim themes are present."
-  copy:
-    src: "{{ item }}"
-    dest: "{{ dotfiles_vim_colors_full_path }}/"
-    mode: "0644"
-  become: false
-  with_fileglob:
-    - "{{ dotfiles_repo_local_destination }}/{{ dotfiles_vim_colors_path }}/*"
-
-- name: "Ensure dotfiles are in their location."
-  copy:
-    src: "{{ item }}"
+- name: "Ensure all files are in place."
+  synchronize:
+    src: "{{ dotfiles_repo_local_destination }}/"
     dest: "{{ dotfiles_home }}/"
-    mode: "0644"
   become: false
-  with_fileglob:
-    - "{{ dotfiles_repo_local_destination }}/.*"
+
+# - name: "Ensure {{ dotfiles_vim_colors_full_path }} directory is present."
+#   file:
+#     path: "{{ dotfiles_vim_colors_full_path | dirname }}"
+#     state: directory
+#     mode: "0775"
+#   become: false
+
+# - name: "Ensure vim themes are present."
+#   copy:
+#     src: "{{ item }}"
+#     dest: "{{ dotfiles_vim_colors_full_path }}/"
+#     mode: "0644"
+#   become: false
+#   with_fileglob:
+#     - "{{ dotfiles_repo_local_destination }}/{{ dotfiles_vim_colors_path }}/*"
+
+# - name: "Ensure dotfiles are in their location."
+#   copy:
+#     src: "{{ item }}"
+#     dest: "{{ dotfiles_home }}/"
+#     mode: "0644"
+#   become: false
+#   with_fileglob:
+#     - "{{ dotfiles_repo_local_destination }}/.*"
