@@ -17,5 +17,5 @@
     archive: yes
     checksum: yes
     times: no
-    delete: yes
+    delete: no
   become: false
